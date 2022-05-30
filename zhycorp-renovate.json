@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "helpers:pinGitHubActionDigests",
+    "group:allNonMajor",
+    ":semanticCommits"
+  ],
+  "labels": ["dependencies"],
+  "schedule": ["before 6am"],
+  "timezone": "Asia/Jakarta",
+  "docker": {
+    "enabled": true,
+    "rangeStrategy": "bump"
+  },
+  "npm": {
+    "rangeStrategy": "update-lockfile",
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["minor", "patch"],
+        "matchCurrentVersion": "!/^0/",
+        "automerge": true
+      },
+      {
+        "matchPackagePatterns": ["@types/node-fetch"],
+        "allowedVersions": "^2"
+      },
+      {
+        "matchDepTypes": ["engines"],
+        "enabled": false
+      },
+      {
+        "matchPackagePatterns": ["@sapphire"],
+        "groupName": "Sapphire Dependencies"
+      }
+    ]
+  }
+}
