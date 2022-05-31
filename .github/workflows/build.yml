@@ -1,12 +1,9 @@
-name: Lint code & compile test
+name: Build & push compiled project
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - "**"
 
 jobs:
   build:
