@@ -2,6 +2,7 @@ import { Toolkit } from "actions-toolkit";
 import { readFileSync, writeFileSync } from "fs";
 import { request } from "undici";
 import { APIResponse } from "./typings";
+import { commitFile } from "./utils/commitFile";
 import { parseTable } from "./utils/parseTable";
 
 const startComment = "<!--START_SECTION:administrator_list-->";
@@ -53,6 +54,12 @@ Toolkit.run(async tools => {
         );
 
         writeFileSync("./README.md", readmeContent.join("\n"));
+        try {
+            await commitFile();
+        } catch (err) {
+            tools.log.debug("Something went wrong");
+            return tools.exit.failure(err as string);
+        }
         return tools.exit.success("Updated README");
     }
 
@@ -85,5 +92,11 @@ Toolkit.run(async tools => {
         tools.log.success("Updated README");
     }
     writeFileSync("./README.md", readmeContent.join("\n"));
+    try {
+        await commitFile();
+    } catch (err) {
+        tools.log.debug("Something went wrong");
+        return tools.exit.failure(err as string);
+    }
     tools.exit.success("Pushed to remote repository");
 }).catch(e => console.error(e));
