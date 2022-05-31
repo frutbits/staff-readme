@@ -99,4 +99,7 @@ Toolkit.run(async tools => {
         return tools.exit.failure(err as string);
     }
     tools.exit.success("Pushed to remote repository");
+}, {
+    event: ["schedule", "workflow_dispatch"],
+    secrets: ["GITHUB_TOKEN"]
 }).catch(e => console.error(e));
