@@ -100,6 +100,5 @@ Toolkit.run(async tools => {
     }
     tools.exit.success("Pushed to remote repository");
 }, {
-    event: ["schedule", "workflow_dispatch"],
-    secrets: ["GITHUB_TOKEN"]
+    event: ["schedule", "workflow_dispatch"]
 }).catch(e => console.error(e));
