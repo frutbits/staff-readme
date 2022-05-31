@@ -47,7 +47,7 @@ Toolkit.run(async tools => {
         return tools.exit.failure(`Couldn't find the "${endComment}" comment`);
     }
 
-    const content = ["<table>", ...parseTable(data.administrator)
+    const content = ["<table>", ...parseTable(data.administrator.sort((a, b) => a.username!.localeCompare(b.username!)))
         .map(x => `<tr>${x.join("")}</tr>`), "</table>"];
 
     const existingData = readmeContent.slice(startIndex + 1, endIndex);
