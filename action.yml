@@ -1,0 +1,17 @@
+name: GitHub - Zhycorp - Staff List Readme
+description: Updates README with the Zhycorp staff list. Fetched from https://api.zhycorp.org/membership
+author: zhycorp
+
+inputs:
+  COMMIT_MSG:
+    description: "Commit message used while committing to the repo"
+    default: "chore(readme): Update staff list"
+    required: false
+
+branding:
+  color: yellow
+  icon: activity
+
+runs:
+  using: node16
+  main: dist/index.js
