@@ -1873,7 +1873,7 @@ var require_io = __commonJS({
     var path = __importStar(require("path"));
     var util_1 = require("util");
     var ioUtil = __importStar(require_io_util());
-    var exec = util_1.promisify(childProcess.exec);
+    var exec2 = util_1.promisify(childProcess.exec);
     var execFile = util_1.promisify(childProcess.execFile);
     function cp(source, dest, options = {}) {
       return __awaiter(this, void 0, void 0, function* () {
@@ -1932,11 +1932,11 @@ var require_io = __commonJS({
           try {
             const cmdPath = ioUtil.getCmdPath();
             if (yield ioUtil.isDirectory(inputPath, true)) {
-              yield exec(`${cmdPath} /s /c "rd /s /q "%inputPath%""`, {
+              yield exec2(`${cmdPath} /s /c "rd /s /q "%inputPath%""`, {
                 env: { inputPath }
               });
             } else {
-              yield exec(`${cmdPath} /s /c "del /f /a "%inputPath%""`, {
+              yield exec2(`${cmdPath} /s /c "del /f /a "%inputPath%""`, {
                 env: { inputPath }
               });
             }
@@ -2632,7 +2632,7 @@ var require_exec = __commonJS({
     exports.getExecOutput = exports.exec = void 0;
     var string_decoder_1 = require("string_decoder");
     var tr = __importStar(require_toolrunner());
-    function exec(commandLine, args, options) {
+    function exec2(commandLine, args, options) {
       return __awaiter(this, void 0, void 0, function* () {
         const commandArgs = tr.argStringToArray(commandLine);
         if (commandArgs.length === 0) {
@@ -2644,7 +2644,7 @@ var require_exec = __commonJS({
         return runner.exec();
       });
     }
-    exports.exec = exec;
+    exports.exec = exec2;
     function getExecOutput(commandLine, args, options) {
       var _a, _b;
       return __awaiter(this, void 0, void 0, function* () {
@@ -2667,7 +2667,7 @@ var require_exec = __commonJS({
           }
         };
         const listeners = Object.assign(Object.assign({}, options === null || options === void 0 ? void 0 : options.listeners), { stdout: stdOutListener, stderr: stdErrListener });
-        const exitCode = yield exec(commandLine, args, Object.assign(Object.assign({}, options), { listeners }));
+        const exitCode = yield exec2(commandLine, args, Object.assign(Object.assign({}, options), { listeners }));
         stdout += stdoutDecoder.end();
         stderr += stderrDecoder.end();
         return {
@@ -6526,11 +6526,11 @@ var require_mode = __commonJS({
 var require_isexe = __commonJS({
   "node_modules/isexe/index.js"(exports, module2) {
     var fs = require("fs");
-    var core;
+    var core2;
     if (process.platform === "win32" || global.TESTING_WINDOWS) {
-      core = require_windows();
+      core2 = require_windows();
     } else {
-      core = require_mode();
+      core2 = require_mode();
     }
     module2.exports = isexe;
     isexe.sync = sync;
@@ -6553,7 +6553,7 @@ var require_isexe = __commonJS({
           });
         });
       }
-      core(path, options || {}, function(er, is) {
+      core2(path, options || {}, function(er, is) {
         if (er) {
           if (er.code === "EACCES" || options && options.ignoreErrors) {
             er = null;
@@ -6565,7 +6565,7 @@ var require_isexe = __commonJS({
     }
     function sync(path, options) {
       try {
-        return core.sync(path, options || {});
+        return core2.sync(path, options || {});
       } catch (er) {
         if (options && options.ignoreErrors || er.code === "EACCES") {
           return false;
@@ -8017,7 +8017,7 @@ var require_cross_spawn = __commonJS({
     var cp = require("child_process");
     var parse = require_parse();
     var enoent = require_enoent();
-    function spawn(command, args, options) {
+    function spawn2(command, args, options) {
       const parsed = parse(command, args, options);
       const spawned = cp.spawn(parsed.command, parsed.args, parsed.options);
       enoent.hookChildProcess(spawned, parsed);
@@ -8029,8 +8029,8 @@ var require_cross_spawn = __commonJS({
       result.error = result.error || enoent.verifyENOENTSync(result.status, parsed);
       return result;
     }
-    module2.exports = spawn;
-    module2.exports.spawn = spawn;
+    module2.exports = spawn2;
+    module2.exports.spawn = spawn2;
     module2.exports.sync = spawnSync;
     module2.exports._parse = parse;
     module2.exports._enoent = enoent;
@@ -14879,12 +14879,12 @@ var require_dist_node13 = __commonJS({
   "node_modules/@octokit/rest/dist-node/index.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var core = require_dist_node9();
+    var core2 = require_dist_node9();
     var pluginRequestLog = require_dist_node10();
     var pluginPaginateRest = require_dist_node11();
     var pluginRestEndpointMethods = require_dist_node12();
     var VERSION = "17.11.2";
-    var Octokit = core.Octokit.plugin(pluginRequestLog.requestLog, pluginRestEndpointMethods.restEndpointMethods, pluginPaginateRest.paginateRest).defaults({
+    var Octokit = core2.Octokit.plugin(pluginRequestLog.requestLog, pluginRestEndpointMethods.restEndpointMethods, pluginPaginateRest.paginateRest).defaults({
       userAgent: `octokit-rest.js/${VERSION}`
     });
     exports.Octokit = Octokit;
@@ -15063,11 +15063,11 @@ var require_inputs = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createInputProxy = void 0;
-    var core = __importStar(require_core());
+    var core2 = __importStar(require_core());
     function createInputProxy() {
       return new Proxy({}, {
         get: function(_, name) {
-          return core.getInput(name);
+          return core2.getInput(name);
         },
         getOwnPropertyDescriptor: function() {
           return {
@@ -15123,11 +15123,11 @@ var require_outputs = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.createOutputProxy = void 0;
-    var core = __importStar(require_core());
+    var core2 = __importStar(require_core());
     function createOutputProxy() {
       return new Proxy({}, {
         set: function(originalObject, name, value) {
-          core.setOutput(name, value);
+          core2.setOutput(name, value);
           originalObject[name] = value;
           return true;
         },
@@ -15284,8 +15284,8 @@ var require_lib4 = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Toolkit = void 0;
-    var core = __importStar(require_core());
-    var exec = __importStar(require_exec());
+    var core2 = __importStar(require_core());
+    var exec2 = __importStar(require_exec());
     var fs_1 = __importDefault(require("fs"));
     var minimist_1 = __importDefault(require_minimist());
     var path_1 = __importDefault(require("path"));
@@ -15308,7 +15308,7 @@ var require_lib4 = __commonJS({
         this.inputs = inputs_1.createInputProxy();
         this.outputs = outputs_1.createOutputProxy();
         this.token = opts.token || this.inputs.github_token || process.env.GITHUB_TOKEN;
-        this.exec = exec.exec.bind(this);
+        this.exec = exec2.exec.bind(this);
         this.exit = new exit_1.Exit(this.log);
         this.context = new context_1.Context();
         this.github = new rest_1.Octokit({ auth: "token " + this.token });
@@ -15339,7 +15339,7 @@ var require_lib4 = __commonJS({
                 return [2, _a];
               case 5:
                 err_1 = _b.sent();
-                core.setFailed(err_1.message);
+                core2.setFailed(err_1.message);
                 tools.exit.failure(err_1);
                 return [3, 6];
               case 6:
@@ -23909,6 +23909,45 @@ var import_actions_toolkit = __toESM(require_lib4());
 var import_fs = require("fs");
 var import_undici = __toESM(require_undici());
 
+// src/config.ts
+var import_core = __toESM(require_core());
+var COMMIT_MSG = import_core.default.getInput("COMMIT_MSG");
+
+// src/utils/exec.ts
+var import_child_process = require("child_process");
+async function exec(cmd, args = []) {
+  return new Promise((resolve, reject) => {
+    const app = (0, import_child_process.spawn)(cmd, args, { stdio: "pipe" });
+    let stdout = "";
+    app.stdout.on("data", (data) => {
+      stdout = data;
+    });
+    app.on("close", (code) => {
+      if (code !== 0 && !stdout.includes("nothing to commit")) {
+        const err = new Error(`Invalid status code: ${code}`);
+        Object.assign(err, { code });
+        return reject(err);
+      }
+      return resolve(code);
+    });
+    app.on("error", reject);
+  });
+}
+
+// src/utils/commitFile.ts
+async function commitFile() {
+  await exec("git", [
+    "config",
+    "--global",
+    "user.email",
+    "github-actions[bot]@users.noreply.github.com"
+  ]);
+  await exec("git", ["config", "--global", "user.name", "github-actions[bot]"]);
+  await exec("git", ["add", "README.md"]);
+  await exec("git", ["commit", "-m", COMMIT_MSG]);
+  await exec("git", ["push"]);
+}
+
 // src/utils/parseTable.ts
 function parseTable(members) {
   var _a;
@@ -23968,6 +24007,12 @@ import_actions_toolkit.Toolkit.run(async (tools) => {
     content.forEach((line, i) => readmeContent.splice(startIndex + i, 0, line));
     readmeContent.splice(startIndex + content.length, 0, "<!--END_SECTION:administrator_list>");
     (0, import_fs.writeFileSync)("./README.md", readmeContent.join("\n"));
+    try {
+      await commitFile();
+    } catch (err) {
+      tools.log.debug("Something went wrong");
+      return tools.exit.failure(err);
+    }
     return tools.exit.success("Updated README");
   }
   const oldContent = readmeContent.slice(startIndex + 1, endIndex).join("\n");
@@ -23998,6 +24043,12 @@ import_actions_toolkit.Toolkit.run(async (tools) => {
     tools.log.success("Updated README");
   }
   (0, import_fs.writeFileSync)("./README.md", readmeContent.join("\n"));
+  try {
+    await commitFile();
+  } catch (err) {
+    tools.log.debug("Something went wrong");
+    return tools.exit.failure(err);
+  }
   tools.exit.success("Pushed to remote repository");
 }).catch((e) => console.error(e));
 /*!
