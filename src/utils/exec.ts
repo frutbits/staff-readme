@@ -9,7 +9,7 @@ export async function exec(cmd: string, args: string[] = []): Promise<number | n
         });
         app.on("close", code => {
             if (code !== 0 && !stdout.includes("nothing to commit")) {
-                const err = new Error(`Invalid status code: ${code!}`);
+                const err = new Error(`Invalid status code when executing "${cmd}": ${code!}`);
                 Object.assign(err, { code });
                 return reject(err);
             }
