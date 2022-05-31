@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -23,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Compile
-        run: npm run compile
+      - name: Build project
+        run: npm run build
       
       - name: Push changes
         run: |
