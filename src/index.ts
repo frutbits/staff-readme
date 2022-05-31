@@ -9,6 +9,7 @@ const startComment = "<!--START_SECTION:administrator_list-->";
 const endComment = "<!--END_SECTION:administrator_list-->";
 
 Toolkit.run(async tools => {
+    const workingDirectory = process.env.WORKING_DIRECTORY ?? ".";
     tools.log.debug("GET /membership");
     const response = await request("https://api.zhycorp.org/membership").catch((e: Error) => e);
     if (response instanceof Error) {
@@ -28,7 +29,7 @@ Toolkit.run(async tools => {
         return tools.exit.failure("Administrator is empty, aborting process");
     }
 
-    const readmeContent = readFileSync("./README.md", "utf-8").split("\n");
+    const readmeContent = readFileSync(`${workingDirectory}/README.md`, "utf-8").split("\n");
     let startIndex = readmeContent.findIndex(c => c.trim() === startComment);
     if (startIndex === -1) {
         return tools.exit.failure(`Couldn't find the "${startComment}" comment`);
@@ -53,7 +54,7 @@ Toolkit.run(async tools => {
             "<!--END_SECTION:administrator_list>"
         );
 
-        writeFileSync("./README.md", readmeContent.join("\n"));
+        writeFileSync(`${workingDirectory}/README.md`, readmeContent.join("\n"));
         try {
             await commitFile();
         } catch (err) {
@@ -91,7 +92,7 @@ Toolkit.run(async tools => {
         });
         tools.log.success("Updated README");
     }
-    writeFileSync("./README.md", readmeContent.join("\n"));
+    writeFileSync(`${workingDirectory}/README.md`, readmeContent.join("\n"));
     try {
         await commitFile();
     } catch (err) {
