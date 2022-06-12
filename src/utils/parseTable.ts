@@ -12,7 +12,7 @@ export function parseTable(members: MembershipPayload[]): string[][] {
         }
         if (!Array.isArray(result[availableIndex])) result[availableIndex] = [];
         result[availableIndex].push(`
-<td align="center"><a href="https://zhycorp.org/staff"><img src="${member.avatarURL!.replace(".gif", ".webp")}" width="100px;" alt=""/><br /><sub><b>${member.username!}#${member.discriminator!}</b></sub></a><br/></td>
+<td align="center"><a href="https://frutbits.org/staff"><img src="${member.avatarURL!.replace(".gif", ".webp")}" width="100px;" alt=""/><br /><sub><b>${member.username!}#${member.discriminator!}</b></sub></a><br/></td>
         `.trim());
     }
     return result;

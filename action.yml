@@ -1,6 +1,6 @@
-name: GitHub - Zhycorp - Staff List Readme
-description: Updates README with the Zhycorp staff list. Fetched from https://api.zhycorp.org/membership
-author: zhycorp
+name: GitHub - FrutBits Indonesia - Staff List Readme
+description: Updates README with the FrutBits Indonesia staff list. Fetched from https://api.frutbits.org/membership
+author: frutbits
 
 branding:
   color: yellow

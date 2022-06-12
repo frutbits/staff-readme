@@ -13,7 +13,7 @@ Toolkit.run(async tools => {
     const workingDirectory = process.env.WORKING_DIRECTORY ?? ".";
     // Fetch data from /membership
     tools.log.debug("GET /membership");
-    const response = await request("https://api.zhycorp.org/membership").catch((e: Error) => e);
+    const response = await request("https://api.frutbits.org/membership").catch((e: Error) => e);
     if (response instanceof Error) {
         return tools.exit.failure(`Couldn't GET /membership: ${response.message}`);
     }
