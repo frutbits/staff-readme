@@ -1,6 +1,6 @@
 {
   "name": "staff-readme",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A reuseable GitHub workflows for updating FrutBits Indonesia staff list continuously",
   "main": "dist/index.js",
   "scripts": {
