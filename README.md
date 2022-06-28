@@ -4,7 +4,7 @@
 
 # @frutbits/staff-readme
 
-**A reuseable GitHub workflows for updating FrutBits Indonesia staff list continuously**
+**A GitHub action for updating FrutBits Indonesia staff list continuously**
 
 [![GitHub](https://img.shields.io/github/license/frutbits/staff-readme)](https://github.com/frutbits/staff-readme/blob/main/LICENSE)
 [![GitHub version](https://badge.fury.io/gh/frutbits%2Fstaff-readme.svg)](https://badge.fury.io/gh/frutbits%2Fstaff-readme)
