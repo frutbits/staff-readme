@@ -1,7 +1,22 @@
 {
   "name": "staff-readme",
   "version": "1.2.2",
-  "description": "A reuseable GitHub workflows for updating FrutBits Indonesia staff list continuously",
+  "description": "A GitHub action for updating FrutBits Indonesia staff list continuously",
+  "keywords": [
+    "typescript",
+    "frutbits",
+    "github-action"
+  ],
+  "homepage": "https://frutbits.org/",
+  "bugs": {
+    "url": "https://github.com/frutbits/staff-readme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frutbits/staff-readme.git"
+  },
+  "license": "AGPL-3.0",
+  "author": "FrutBits Indonesia <contact@frutbits.org>",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run lint && npm run compile",
@@ -12,40 +27,26 @@
     "start": "node dist",
     "start:dev": "npm run compile && npm start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/frutbits/staff-readme.git"
-  },
-  "keywords": [
-    "js",
-    "typescript"
-  ],
-  "author": "FrutBits Indonesia <contact@frutbits.org>",
-  "license": "AGPL-3.0",
-  "bugs": {
-    "url": "https://github.com/frutbits/staff-readme/issues"
-  },
-  "homepage": "https://frutbits.org/",
-  "engines": {
-    "node": ">=16.6.0",
-    "npm": ">=7.0.0"
-  },
   "eslintConfig": {
     "extends": "@hazmi35/eslint-config/typescript",
     "ignorePatterns": "dist/*"
   },
-  "devDependencies": {
-    "@hazmi35/eslint-config": "^8.4.2",
-    "@types/node": "^17.0.23",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
-    "esbuild": "^0.14.47",
-    "eslint": "^8.18.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.7.4"
-  },
   "dependencies": {
     "actions-toolkit": "^6.0.1",
     "undici": "^5.5.1"
+  },
+  "devDependencies": {
+    "@hazmi35/eslint-config": "^8.4.2",
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "esbuild": "^0.14.43",
+    "eslint": "^8.17.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.3"
+  },
+  "engines": {
+    "node": ">=16.6.0",
+    "npm": ">=7.0.0"
   }
 }
