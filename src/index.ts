@@ -28,6 +28,10 @@ Toolkit.run(async tools => {
         return tools.exit.failure("Failed to parse membership data");
     }
 
+    if (!Array.isArray(data.administrator)) {
+        return tools.exit.failure("Administrator column is missing");
+    }
+
     tools.log.debug(`Found ${data.administrator.length} administrator`);
 
     if (data.administrator.length === 0) {
