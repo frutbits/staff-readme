@@ -38,12 +38,12 @@
   "devDependencies": {
     "@hazmi35/eslint-config": "^8.7.1",
     "@types/node": "^17.0.23",
-    "@typescript-eslint/eslint-plugin": "^5.45.1",
-    "@typescript-eslint/parser": "^5.45.1",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
     "esbuild": "^0.15.10",
     "eslint": "^8.29.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "engines": {
     "node": ">=16.6.0",
